@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
-import AddStudent from '../../components/Form/AddStudent';
+import AddStudent from '../../components/Form/Student/Add';
 import Footer from '../../components/Footer';
 
 interface InitialStateStudent {
@@ -14,7 +14,7 @@ interface InitialStateStudent {
   major: string;
 }
 
-const studentUrl = 'http://localhost:5000/api/students';
+const STUDENT_URL = 'http://localhost:5000/api/students';
 
 const StudentAdd: FC = () => {
   const [student, setStudent] = useState<InitialStateStudent>({
@@ -32,7 +32,7 @@ const StudentAdd: FC = () => {
 
   const postTask = async () => {
     try {
-      await axios.post(`${studentUrl}`, student);
+      await axios.post(`${STUDENT_URL}`, student);
       navigate('/student');
     } catch (err) {
       throw err;

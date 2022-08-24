@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
-import EditExpense from '../../components/Form/EditExpense';
+import EditExpense from '../../components/Form/Expense/Edit';
 import Footer from '../../components/Footer';
 import axios from 'axios';
 
@@ -16,8 +16,8 @@ interface InitialStateExpense {
   amount: number;
 }
 
-const expenseUrl = 'http://localhost:5000/api/expenses';
-const studentUrl = 'http://localhost:5000/api/students';
+const EXPENSE_URL = 'http://localhost:5000/api/expenses';
+const STUDENT_URL = 'http://localhost:5000/api/students';
 
 const ExpenseEdit: FC = () => {
   const [expense, setExpense] = useState<InitialStateExpense>({
@@ -42,7 +42,7 @@ const ExpenseEdit: FC = () => {
 
   const getStudents = async () => {
     try {
-      await axios.get(`${studentUrl}`).then((res) => setStudents(res.data));
+      await axios.get(`${STUDENT_URL}`).then((res) => setStudents(res.data));
     } catch (err) {
       throw err;
     }
@@ -51,7 +51,7 @@ const ExpenseEdit: FC = () => {
   const getExpense = async () => {
     try {
       await axios
-        .get(`${expenseUrl}/${id}`)
+        .get(`${EXPENSE_URL}/${id}`)
         .then((res) => setExpense(res.data));
     } catch (err) {
       throw err;
@@ -60,7 +60,7 @@ const ExpenseEdit: FC = () => {
 
   const putTask = async () => {
     try {
-      await axios.put(`${expenseUrl}/${id}`, expense);
+      await axios.put(`${EXPENSE_URL}/${id}`, expense);
       navigate('/expense');
     } catch (err) {
       throw err;

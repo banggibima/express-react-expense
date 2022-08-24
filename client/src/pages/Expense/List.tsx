@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
-import FormSearchExpense from '../../components/Form/SearchExpense';
+import SearchExpense from '../../components/Form/Expense/Search';
 import TableExpense from '../../components/Table/Expense';
 import Footer from '../../components/Footer';
 
-const expenseUrl = 'http://localhost:5000/api/expenses';
+const EXPENSE_URL = 'http://localhost:5000/api/expenses';
 
 const ExpenseList: FC = () => {
   const [expenses, setExpenses] = useState<any[]>([]);
@@ -20,7 +20,7 @@ const ExpenseList: FC = () => {
 
   const getExpenses = async () => {
     try {
-      await axios.get(`${expenseUrl}`).then((res) => setExpenses(res.data));
+      await axios.get(`${EXPENSE_URL}`).then((res) => setExpenses(res.data));
     } catch (err) {
       throw err;
     }
@@ -28,7 +28,7 @@ const ExpenseList: FC = () => {
 
   const deleteExpense = async (id: any) => {
     try {
-      await axios.delete(`${expenseUrl}/${id}`);
+      await axios.delete(`${EXPENSE_URL}/${id}`);
       getExpenses();
     } catch (err) {
       throw err;
@@ -56,7 +56,7 @@ const ExpenseList: FC = () => {
                 Print
               </button>
             </div>
-            <FormSearchExpense />
+            <SearchExpense />
             <TableExpense expenses={expenses} deleteExpense={deleteExpense} />
           </div>
         </div>

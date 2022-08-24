@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
-import AddExpense from '../../components/Form/AddExpense';
+import AddExpense from '../../components/Form/Expense/Add';
 import Footer from '../../components/Footer';
 
 interface InitialStateExpense {
@@ -16,8 +16,8 @@ interface InitialStateExpense {
   amount: number;
 }
 
-const expenseUrl = 'http://localhost:5000/api/expenses';
-const studentUrl = 'http://localhost:5000/api/students';
+const EXPENSE_URL = 'http://localhost:5000/api/expenses';
+const STUDENT_URL = 'http://localhost:5000/api/students';
 
 const ExpenseAdd: FC = () => {
   const [expense, setExpense] = useState<InitialStateExpense>({
@@ -39,7 +39,7 @@ const ExpenseAdd: FC = () => {
 
   const getStudents = async () => {
     try {
-      await axios.get(`${studentUrl}`).then((res) => setStudents(res.data));
+      await axios.get(`${STUDENT_URL}`).then((res) => setStudents(res.data));
     } catch (err) {
       throw err;
     }
@@ -47,7 +47,7 @@ const ExpenseAdd: FC = () => {
 
   const postTask = async () => {
     try {
-      await axios.post(`${expenseUrl}`, expense);
+      await axios.post(`${EXPENSE_URL}`, expense);
       navigate('/expense');
     } catch (err) {
       throw err;

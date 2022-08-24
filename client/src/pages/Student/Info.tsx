@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 import CardStudent from '../../components/Card/Student';
 import Footer from '../../components/Footer';
 
-const studentUrl = 'http://localhost:5000/api/students';
+const STUDENT_URL = 'http://localhost:5000/api/students';
 
 const StudentInfo: FC = () => {
   const [student, setStudent] = useState<any>({});
@@ -23,7 +23,7 @@ const StudentInfo: FC = () => {
   const getStudent = async () => {
     try {
       await axios
-        .get(`${studentUrl}/${id}`)
+        .get(`${STUDENT_URL}/${id}`)
         .then((res) => setStudent(res.data));
     } catch (err) {
       throw err;

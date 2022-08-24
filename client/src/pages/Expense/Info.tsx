@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 import CardExpense from '../../components/Card/Expense';
 import Footer from '../../components/Footer';
 
-const expenseUrl = 'http://localhost:5000/api/expenses';
+const EXPENSE_URL = 'http://localhost:5000/api/expenses';
 
 const ExpenseInfo: FC = () => {
   const [expense, setExpense] = useState<any>({});
@@ -23,7 +23,7 @@ const ExpenseInfo: FC = () => {
   const getExpense = async () => {
     try {
       await axios
-        .get(`${expenseUrl}/${id}`)
+        .get(`${EXPENSE_URL}/${id}`)
         .then((res) => setExpense(res.data));
     } catch (err) {
       throw err;

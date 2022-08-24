@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
-import EditStudent from '../../components/Form/EditStudent';
+import EditStudent from '../../components/Form/Student/Edit';
 import Footer from '../../components/Footer';
 import axios from 'axios';
 
@@ -14,7 +14,7 @@ interface InitialStateStudent {
   major: string;
 }
 
-const studentUrl = 'http://localhost:5000/api/students';
+const STUDENT_URL = 'http://localhost:5000/api/students';
 
 const StudentEdit: FC = () => {
   const [student, setStudent] = useState<InitialStateStudent>({
@@ -36,7 +36,7 @@ const StudentEdit: FC = () => {
   const getStudent = async () => {
     try {
       await axios
-        .get(`${studentUrl}/${id}`)
+        .get(`${STUDENT_URL}/${id}`)
         .then((res) => setStudent(res.data));
     } catch (err) {
       throw err;
@@ -45,7 +45,7 @@ const StudentEdit: FC = () => {
 
   const putTask = async () => {
     try {
-      await axios.put(`${studentUrl}/${id}`, student);
+      await axios.put(`${STUDENT_URL}/${id}`, student);
       navigate('/student');
     } catch (err) {
       throw err;

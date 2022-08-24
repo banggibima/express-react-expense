@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
-import FormSearchStudent from '../../components/Form/SearchStudent';
+import SearchStudent from '../../components/Form/Student/Search';
 import TableStudent from '../../components/Table/Student';
 import Footer from '../../components/Footer';
 
-const studentUrl = 'http://localhost:5000/api/students';
+const STUDENT_URL = 'http://localhost:5000/api/students';
 
 const StudentList: FC = () => {
   const [students, setStudents] = useState<any[]>([]);
@@ -20,7 +20,7 @@ const StudentList: FC = () => {
 
   const getStudents = async () => {
     try {
-      await axios.get(`${studentUrl}`).then((res) => setStudents(res.data));
+      await axios.get(`${STUDENT_URL}`).then((res) => setStudents(res.data));
     } catch (err) {
       throw err;
     }
@@ -28,7 +28,7 @@ const StudentList: FC = () => {
 
   const deleteStudent = async (id: any) => {
     try {
-      await axios.delete(`${studentUrl}/${id}`);
+      await axios.delete(`${STUDENT_URL}/${id}`);
       getStudents();
     } catch (err) {
       throw err;
@@ -56,7 +56,7 @@ const StudentList: FC = () => {
                 Print
               </button>
             </div>
-            <FormSearchStudent />
+            <SearchStudent />
             <TableStudent students={students} deleteStudent={deleteStudent} />
           </div>
         </div>

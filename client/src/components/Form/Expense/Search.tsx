@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-const FormSearchExpense: FC = () => {
+const SearchExpense: FC = () => {
   return (
     <>
       <div className="mt-4">
@@ -18,4 +18,4 @@ const FormSearchExpense: FC = () => {
   );
 };
 
-export default FormSearchExpense;
+export default SearchExpense;
