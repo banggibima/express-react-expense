@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { FC, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
@@ -5,7 +6,6 @@ import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
 import EditExpense from '../../components/Form/Expense/Edit';
 import Footer from '../../components/Footer';
-import axios from 'axios';
 
 interface InitialStateExpense {
   student: string;

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { FC, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
@@ -5,7 +6,6 @@ import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
 import EditStudent from '../../components/Form/Student/Edit';
 import Footer from '../../components/Footer';
-import axios from 'axios';
 
 interface InitialStateStudent {
   nim: string;

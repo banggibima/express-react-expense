@@ -11,6 +11,7 @@ import StudentAdd from './pages/Student/Add';
 import StudentInfo from './pages/Student/Info';
 import StudentEdit from './pages/Student/Edit';
 import About from './pages/About';
+import NotFound from './pages/NotFound';
 
 const App: FC = () => {
   return (
@@ -27,6 +28,7 @@ const App: FC = () => {
           <Route path="/student/info/:id" element={<StudentInfo />} />
           <Route path="/student/edit/:id" element={<StudentEdit />} />
           <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>
